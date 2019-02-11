@@ -4,11 +4,11 @@ import { getTodos, toggleTodo, saveTodos, removeTodo } from './todos'
 // renderTodos
 const renderTodos = () => {
   const todos = getTodos()
-  const filters = getFilters()
+  const { searchText, hideCompleted } = getFilters()
 
   const filteredTodos = todos.filter(todo => {
-    const searchTextMatch = todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
-    const hideCompletedMatch = !filters.hideCompleted || !todo.completed
+    const searchTextMatch = todo.text.toLowerCase().includes(searchText.toLowerCase())
+    const hideCompletedMatch = !hideCompleted || !todo.completed
 
     return searchTextMatch && hideCompletedMatch
   })
